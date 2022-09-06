@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Folder{% endblock title %}
+{% block main-content %} 
+ 
+{% if fileAll %}
+<div class="d-flex">
+    {% for i in fileAll %}
+        <div class="me-3 folderstyle">
+            <h5>{{i.name}}</h5>
+            <form action="{{i.name}}" meta="post">
+                <input class="btn btn-outline-warning btn-lg" type="submit" value="{{i.name}}">
+            </form>
+            <h3></h3>
+        </div>
+    {% endfor %}
+</div>
+    {% else %}
+    <h1>No Folder</h1>
+    {% endif %}
+
+    {% if data %}
+    <div class="d-flex">
+    {% for i in data %}
+            <hr>
+            <div class="card me-3" style="width: 18rem;">
+                <img src="{{i.location.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"></h5>
+                  <p class="card-text">{{i.description}}</p>
+                  <a href="{{i.location.url}}" class="btn btn-primary">View/Download</a>
+                </div>
+              </div>
+       
+    {% endfor %}
+</div>
+    {% else %}
+    <h1>No File</h1>
+    {% endif %}
+    
+{% endblock main-content %}
